@@ -1,4 +1,4 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+source ~/.config/fish/cachyos/cachyos-config.fish
 
 # initialize some cli tools
 source ~/.config/fish/init.fish
