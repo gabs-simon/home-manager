@@ -1,0 +1,7 @@
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+
+# initialize some cli tools
+source ~/.config/fish/init.fish
+
+# setup aliases
+source ~/.config/fish/alias.fish
