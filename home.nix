@@ -8,12 +8,13 @@ let
   plEnd = bg: "[](fg:${bg} bold) ";
   plEndBlock = bg: text: "${text}${plEnd bg}";
   plBlock = bg: text: "${plStart bg}${text}${plEnd bg}";
+  homeDir = if pkgs.stdenv.isDarwin then "/Users/gabs" else "/home/gabs";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "gabs";
-  home.homeDirectory = "/home/gabs";
+  home.homeDirectory = homeDir;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -43,6 +44,7 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.coreutils
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -117,6 +119,10 @@ in
     enableFishIntegration = true;
   };
 
+  programs.eza = {
+    enable = true;
+  };
+
   programs.fastfetch = {
     enable = true;
   };
@@ -136,6 +142,10 @@ in
   home.file.".config/fish" = {
     source = ./config/fish;
     recursive = true;
+  };
+
+  programs.fzf = {
+    enable = true;
   };
 
   programs.git = {
@@ -169,6 +179,12 @@ in
     };
   };
 
+  programs.man = {
+    enable = true;
+    generateCaches = true;
+    package = pkgs.man;
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -179,6 +195,8 @@ in
     source = ./config/nvim;
     recursive = true;
   };
+
+  programs.pay-respects.enable = true;
 
   programs.starship = {
     enable = true;
@@ -339,9 +357,12 @@ in
     enable = true;
   };
 
+  programs.zoxide = {
+    enable = true;
+  };
+
   home.file.".config/zellij" = {
     source = ./config/zellij;
     recursive = true;
   };
-
 }

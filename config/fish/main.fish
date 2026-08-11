@@ -1,3 +1,7 @@
+# initialize path
+source ~/.config/fish/path.fish
+
+# loads cachyos config
 source ~/.config/fish/cachyos/cachyos-config.fish
 
 # initialize some cli tools

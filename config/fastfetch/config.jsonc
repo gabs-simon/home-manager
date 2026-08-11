@@ -1,7 +1,7 @@
 {
   "logo": {
-    "source": "~/.config/fastfetch/images/arcane.webp",
-    "type": "kitty",
+    "source": "$(eza -1 ~/.config/fastfetch/images/*.png | shuf -n 1 | sed -E 's/(\\.png).*/\\1/')",
+    "type": "kitty-direct",
     "padding": {
       "top": 1,
       "left": 4,
