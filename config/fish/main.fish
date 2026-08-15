@@ -9,3 +9,6 @@ source ~/.config/fish/init.fish
 
 # setup aliases
 source ~/.config/fish/alias.fish
+
+# os-specific configs
+source ~/.config/fish/os_specific.fish
