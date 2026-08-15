@@ -44,6 +44,7 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+  ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
     pkgs.coreutils
   ];
 
