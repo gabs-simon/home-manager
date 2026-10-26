@@ -8,7 +8,7 @@ let
   plEnd = bg: "[](fg:${bg} bold) ";
   plEndBlock = bg: text: "${text}${plEnd bg}";
   plBlock = bg: text: "${plStart bg}${text}${plEnd bg}";
-  homeDir = if pkgs.stdenv.isDarwin then "/Users/gabs" else "/home/gabs";
+  homeDir = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/gabs" else "/home/gabs";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -352,10 +352,6 @@ in
         pldarkblue = "#33658A";
       };
     };
-  };
-
-  programs.zellij = {
-    enable = true;
   };
 
   programs.zoxide = {
