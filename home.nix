@@ -44,7 +44,7 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+  ] ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
     pkgs.coreutils
   ];
 
@@ -97,6 +97,18 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = true;
+      sync_frequency = "5m";
+      sync_address = "https://api.atuin.sh";
+      search_mode = "fuzzy";
+    };
+  };
+
+  home.file.".config/atuin/completions.fish".source = ./config/atuin/completions.fish;
+
   programs.bat = {
     enable = true;
     config = {
@@ -147,6 +159,7 @@ in
 
   programs.fzf = {
     enable = true;
+    historyWidget.command = "";
   };
 
   programs.git = {
@@ -358,6 +371,7 @@ in
     enable = true;
   };
 
+  # only copy zellij configs - it should be installed natively to use GPU acceleration
   home.file.".config/zellij" = {
     source = ./config/zellij;
     recursive = true;
